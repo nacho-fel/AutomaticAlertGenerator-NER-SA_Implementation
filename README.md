@@ -6,22 +6,18 @@ This project involves the development of an automatic alert generation system fr
 
 ## System Overview
 
-Given a textual input (e.g., a news article snippet or tweet) and an optional related image, the system follows this pipeline:
+This project implements an **automatic alert generation system** that processes **news articles** and **social media posts**, combining deep neural networks with advanced **Natural Language Processing (NLP)** to produce timely, contextualized alerts.
 
-1. **Image Captioning (Multimodal Context)**  
-   If an image is provided, a pretrained BLIP model generates a caption that summarizes the visual content.
+Key components include:
 
-2. **Text Fusion**  
-   The image caption is concatenated with the original text to enrich context and reduce ambiguity before downstream NLP tasks.
+- **Deep Sequential Modeling (BiLSTM):** A Bi-directional LSTM (BiLSTM) captures semantic and temporal dependencies in text using both past and future context, improving performance on sequence understanding compared to unidirectional LSTMs.
 
-3. **Named Entity Recognition (NER)**  
-   The fused text is processed by a NER component to extract key entities (e.g., persons, locations, organizations) for tracking and alert attribution.
+- **Sentiment Analysis (SA):** Detects the emotional tone of content (positive/negative/neutral). This supports use cases such as crisis monitoring, early warning signals, and misinformation-related trend tracking by handling linguistic nuance and contextual ambiguity.
 
-4. **Sentiment Analysis (BiLSTM + Self-Attention)**  
-   A deep NLP classifier (e.g., SA-BiLSTM) predicts the overall sentiment (positive, neutral, or negative) by modeling sequential dependencies and attending to the most informative tokens.
+- **Self-Attention (SA) over BiLSTM (SA-BiLSTM):** A self-attention layer highlights the most informative words or segments in a post, strengthening downstream tasks like sentiment monitoring and credibility/fake-news related classification.
 
-5. **Alert Generation**  
-   The extracted entities, predicted sentiment, and enriched text are combined to generate a concise one-sentence alert using a language generation module.
+- **Multimodal Integration (Text + Image):** The system combines Named Entity Recognition (NER) for identifying and tracking key entities with image captioning (e.g., CNN–LSTM style encoders/decoders) to generate text descriptions for visual content and enrich alert context when images are present.
+
 
 ---
 
@@ -118,5 +114,6 @@ python -m AG.inference_pipeline
 python -m AG.AG
 ```
 Another option if the downloading and prediction of the model takes too long it to upload the ner_sa_output.csv and the AG.py to colab, which is faster. No adaptations to the code have to be done.
+
 
 
