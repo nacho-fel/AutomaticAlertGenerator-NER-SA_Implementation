@@ -16,7 +16,7 @@ Key components include:
 
 - **Self-Attention (SA) over BiLSTM (SA-BiLSTM):** A self-attention layer highlights the most informative words or segments in a post, strengthening downstream tasks like sentiment monitoring and credibility/fake-news related classification.
 
-- **Multimodal Integration (Text + Image):** The system combines Named Entity Recognition (NER) for identifying and tracking key entities with image captioning (e.g., CNN–LSTM style encoders/decoders) to generate text descriptions for visual content and enrich alert context when images are present.
+- **Multimodal Integration (Text + Image):** The system combines Named Entity Recognition (NER) for identifying and tracking key entities with image captioning (CNN–LSTM style encoders/decoders) to generate text descriptions for visual content and enrich alert context when images are present.
 
 
 ---
@@ -114,6 +114,7 @@ python -m AG.inference_pipeline
 python -m AG.AG
 ```
 Another option if the downloading and prediction of the model takes too long it to upload the ner_sa_output.csv and the AG.py to colab, which is faster. No adaptations to the code have to be done.
+
 
 
 
