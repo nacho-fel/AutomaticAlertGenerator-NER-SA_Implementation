@@ -6,8 +6,6 @@ This project involves the development of an automatic alert generation system fr
 
 ## System Overview
 
-This project implements an **automatic alert generation system** that processes **news articles** and **social media posts**, combining deep neural networks with advanced **Natural Language Processing (NLP)** to produce timely, contextualized alerts.
-
 Key components include:
 
 - **Deep Sequential Modeling (BiLSTM):** A Bi-directional LSTM (BiLSTM) captures semantic and temporal dependencies in text using both past and future context, improving performance on sequence understanding compared to unidirectional LSTMs.
@@ -114,6 +112,7 @@ python -m AG.inference_pipeline
 python -m AG.AG
 ```
 Another option if the downloading and prediction of the model takes too long it to upload the ner_sa_output.csv and the AG.py to colab, which is faster. No adaptations to the code have to be done.
+
 
 
 
