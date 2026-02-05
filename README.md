@@ -6,24 +6,25 @@ This project involves the development of an automatic alert generation system fr
 
 ## System Overview
 
-Given a textual input (e.g., from an article or tweet) and a related image, the system follows this pipeline:
+Given a textual input (e.g., a news article snippet or tweet) and an optional related image, the system follows this pipeline:
 
-1. **Image Captioning**  
-   A pretrained BLIP model generates a textual caption from the image.
+1. **Image Captioning (Multimodal Context)**  
+   If an image is provided, a pretrained BLIP model generates a caption that summarizes the visual content.
 
 2. **Text Fusion**  
-   The generated caption is concatenated with the original input text to enrich context.
+   The image caption is concatenated with the original text to enrich context and reduce ambiguity before downstream NLP tasks.
 
 3. **Named Entity Recognition (NER)**  
-   The fused text is processed using a NER model to extract relevant entities (persons, locations, organizations, etc.).
+   The fused text is processed by a NER component to extract key entities (e.g., persons, locations, organizations) for tracking and alert attribution.
 
-4. **Sentiment Analysis (SA)**  
-   A pretrained SA model classifies the overall sentiment as positive, neutral, or negative.
+4. **Sentiment Analysis (BiLSTM + Self-Attention)**  
+   A deep NLP classifier (e.g., SA-BiLSTM) predicts the overall sentiment (positive, neutral, or negative) by modeling sequential dependencies and attending to the most informative tokens.
 
 5. **Alert Generation**  
-   The final step takes the entities, sentiment, and text as input and generates a concise one-sentence alert using a language generation model.
+   The extracted entities, predicted sentiment, and enriched text are combined to generate a concise one-sentence alert using a language generation module.
 
 ---
+
 
 ## Repository Structure
 
@@ -117,4 +118,5 @@ python -m AG.inference_pipeline
 python -m AG.AG
 ```
 Another option if the downloading and prediction of the model takes too long it to upload the ner_sa_output.csv and the AG.py to colab, which is faster. No adaptations to the code have to be done.
+
 
