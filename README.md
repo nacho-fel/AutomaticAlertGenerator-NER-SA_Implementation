@@ -1,12 +1,12 @@
 # Automatic Alert Generation with NER and SA
 
-This project involves the development of an **automatic alert generation system** from news articles and social media posts. The system leverages **Named Entity Recognition (NER)** and **Sentiment Analysis (SA)** techniques, along with **image captioning**, to produce contextualized alerts. 
+This project involves the development of an automatic alert generation system from news articles and social media posts. The system leverages Named Entity Recognition (NER) and Sentiment Analysis (SA) techniques, along with image captioning, to produce contextualized alerts. 
 
 ---
 
 ## System Overview
 
-Given a **textual input** (e.g., from an article or tweet) and a related **image**, the system follows this pipeline:
+Given a textual input (e.g., from an article or tweet) and a related image, the system follows this pipeline:
 
 1. **Image Captioning**  
    A pretrained BLIP model generates a textual caption from the image.
@@ -18,7 +18,7 @@ Given a **textual input** (e.g., from an article or tweet) and a related **image
    The fused text is processed using a NER model to extract relevant entities (persons, locations, organizations, etc.).
 
 4. **Sentiment Analysis (SA)**  
-   A pretrained SA model classifies the overall sentiment as **positive**, **neutral**, or **negative**.
+   A pretrained SA model classifies the overall sentiment as positive, neutral, or negative.
 
 5. **Alert Generation**  
    The final step takes the entities, sentiment, and text as input and generates a concise one-sentence alert using a language generation model.
@@ -117,3 +117,4 @@ python -m AG.inference_pipeline
 python -m AG.AG
 ```
 Another option if the downloading and prediction of the model takes too long it to upload the ner_sa_output.csv and the AG.py to colab, which is faster. No adaptations to the code have to be done.
+
